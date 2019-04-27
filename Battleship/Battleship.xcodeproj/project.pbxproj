@@ -25,6 +25,9 @@
 		12BB04E7228F55B700B63D21 /* ServerTesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB04E6228F55B700B63D21 /* ServerTesterViewController.swift */; };
 		12BB04E9228F711C00B63D21 /* GameServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB04E8228F711C00B63D21 /* GameServerController.swift */; };
 		12BB04EB228F72BA00B63D21 /* GameServerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB04EA228F72BA00B63D21 /* GameServerViewDelegate.swift */; };
+		B9209DD722750FA600356D71 /* BattleshipScores.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B9209DD522750FA600356D71 /* BattleshipScores.xcdatamodeld */; };
+		B9209DDB2275125D00356D71 /* battleshipScoreAndName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9209DDA2275125D00356D71 /* battleshipScoreAndName.swift */; };
+		B9209DDD2275194D00356D71 /* ViewControllerTopScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9209DDC2275194D00356D71 /* ViewControllerTopScores.swift */; };
 		B95EBAF922742D5D00364682 /* PlayerGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAF822742D5D00364682 /* PlayerGrid.swift */; };
 		B95EBAFB22742D6800364682 /* EnemyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFA22742D6800364682 /* EnemyGrid.swift */; };
 		B95EBAFD22742E2200364682 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFC22742E2200364682 /* Board.swift */; };
@@ -55,6 +58,9 @@
 		12BB04E6228F55B700B63D21 /* ServerTesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTesterViewController.swift; sourceTree = "<group>"; };
 		12BB04E8228F711C00B63D21 /* GameServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServerController.swift; sourceTree = "<group>"; };
 		12BB04EA228F72BA00B63D21 /* GameServerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServerViewDelegate.swift; sourceTree = "<group>"; };
+		B9209DD622750FA600356D71 /* BattleshipScores.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BattleshipScores.xcdatamodel; sourceTree = "<group>"; };
+		B9209DDA2275125D00356D71 /* battleshipScoreAndName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = battleshipScoreAndName.swift; sourceTree = "<group>"; };
+		B9209DDC2275194D00356D71 /* ViewControllerTopScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTopScores.swift; sourceTree = "<group>"; };
 		B95EBAF822742D5D00364682 /* PlayerGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerGrid.swift; sourceTree = "<group>"; };
 		B95EBAFA22742D6800364682 /* EnemyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyGrid.swift; sourceTree = "<group>"; };
 		B95EBAFC22742E2200364682 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 		12A3B67422849D610054D3B1 /* Battleship */ = {
 			isa = PBXGroup;
 			children = (
+				B9209DD92275121E00356D71 /* ScoreViewer */,
 				B95EBB002274DA2F00364682 /* testing */,
 				B9FD7C0522741C5500C0E7DC /* Game */,
 				12A3B69122849EAA0054D3B1 /* MakeConnection */,
@@ -133,6 +140,7 @@
 				12A3B67F22849D620054D3B1 /* Assets.xcassets */,
 				12A3B68122849D620054D3B1 /* LaunchScreen.storyboard */,
 				12A3B68422849D620054D3B1 /* Info.plist */,
+				B9209DD522750FA600356D71 /* BattleshipScores.xcdatamodeld */,
 			);
 			path = Battleship;
 			sourceTree = "<group>";
@@ -154,6 +162,15 @@
 				12BB04E2228F4B2B00B63D21 /* ViewControllerConnectToServer.swift */,
 			);
 			path = MakeConnection;
+			sourceTree = "<group>";
+		};
+		B9209DD92275121E00356D71 /* ScoreViewer */ = {
+			isa = PBXGroup;
+			children = (
+				B9209DDA2275125D00356D71 /* battleshipScoreAndName.swift */,
+				B9209DDC2275194D00356D71 /* ViewControllerTopScores.swift */,
+			);
+			path = ScoreViewer;
 			sourceTree = "<group>";
 		};
 		B95EBB002274DA2F00364682 /* testing */ = {
@@ -261,6 +278,8 @@
 				12A3B6952284A9020054D3B1 /* Ship.swift in Sources */,
 				12BB04EB228F72BA00B63D21 /* GameServerViewDelegate.swift in Sources */,
 				12BB04E3228F4B2B00B63D21 /* ViewControllerConnectToServer.swift in Sources */,
+				B9209DD722750FA600356D71 /* BattleshipScores.xcdatamodeld in Sources */,
+				B9209DDD2275194D00356D71 /* ViewControllerTopScores.swift in Sources */,
 				12A3B67822849D610054D3B1 /* ViewController.swift in Sources */,
 				B95EBAFB22742D6800364682 /* EnemyGrid.swift in Sources */,
 				12BB04E1228F2B8500B63D21 /* CreationGrid.swift in Sources */,
@@ -273,6 +292,7 @@
 				12A3B69022849E840054D3B1 /* ClientListenerProtocol.swift in Sources */,
 				12BB04E9228F711C00B63D21 /* GameServerController.swift in Sources */,
 				B95EBAF922742D5D00364682 /* PlayerGrid.swift in Sources */,
+				B9209DDB2275125D00356D71 /* battleshipScoreAndName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +490,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B9209DD522750FA600356D71 /* BattleshipScores.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B9209DD622750FA600356D71 /* BattleshipScores.xcdatamodel */,
+			);
+			currentVersion = B9209DD622750FA600356D71 /* BattleshipScores.xcdatamodel */;
+			path = BattleshipScores.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 12A3B66A22849D610054D3B1 /* Project object */;
 }

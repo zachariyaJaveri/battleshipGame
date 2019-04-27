@@ -9,13 +9,19 @@
 import UIKit
 
 class GameViewController: UIViewController, GameServerViewDelegate {
+    //FOR CORE
+    private(set) var data = [battleshipScoreAndName]()
+    let SCORE_SCREEN_SEGUE_NAME = "topScoresSegue"
     
+    //VARIABLES
     var gameServer:GameServerController = GameServerController()
     var client:Client = Client()
     var playerBoard:Board?
     var playerShips:[Ship]?
     var me:String = "Me"
     var myPlayerNumber = 0
+    
+    // OUTLETS
     @IBOutlet weak var enemyGrid: EnemyGrid!
     @IBOutlet weak var playerGrid: PlayerGrid!
     @IBOutlet weak var playerLabel: UILabel!
@@ -34,7 +40,10 @@ class GameViewController: UIViewController, GameServerViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Setup for core
+        data = battleshipScoreAndName.getAll()
         
+        //Setup for the game
         gameServer.gameServerViewDelegate = self
         gameServer.client = client
         gameServer.battleshipGame.me = me
@@ -118,14 +127,13 @@ class GameViewController: UIViewController, GameServerViewDelegate {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == SCORE_SCREEN_SEGUE_NAME {
+            
+        }
     }
-    */
+ 
 
 }
