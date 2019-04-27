@@ -6,24 +6,31 @@
 //  Copyright © 2019 Lister, Julia. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class Board: UIView, drawableBoard {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+class Board:drawableBoard {
+    
+    var squareBoard = [String:[Square]]()
+    private let letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    
     func drawBoard() {
-        //I don't know what type of board this is so don't draw it
-        return
+        return;
     }
-}
-
-protocol drawableBoard {
-    func drawBoard()
+    
+    func dumpBoard() {
+        print(squareBoard)
+    }
+    
+    init(boardLength len:Int, boardWidth wid:Int) {
+        
+        for row in 0...len {
+            //Make a row
+            squareBoard[letters[row]] = [Square]()
+            
+            for _ in 0...wid {
+                //Add columns
+                squareBoard[letters[row]]?.append(Square())
+            }
+        }
+    }
 }

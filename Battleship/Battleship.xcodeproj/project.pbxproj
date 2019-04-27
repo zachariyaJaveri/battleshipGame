@@ -18,7 +18,11 @@
 		12A3B69322849EC30054D3B1 /* ClientRecievedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3B69222849EC30054D3B1 /* ClientRecievedData.swift */; };
 		12A3B6952284A9020054D3B1 /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3B6942284A9020054D3B1 /* Ship.swift */; };
 		12A3B6972284AC3A0054D3B1 /* BattleshipGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3B6962284AC3A0054D3B1 /* BattleshipGame.swift */; };
-		B9FD7C0722741C8800C0E7DC /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FD7C0622741C8800C0E7DC /* Board.swift */; };
+		B95EBAF922742D5D00364682 /* playerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAF822742D5D00364682 /* playerBoard.swift */; };
+		B95EBAFB22742D6800364682 /* enemyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFA22742D6800364682 /* enemyBoard.swift */; };
+		B95EBAFD22742E2200364682 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFC22742E2200364682 /* Board.swift */; };
+		B95EBAFF22742F2300364682 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFE22742F2300364682 /* Square.swift */; };
+		B9FD7C0722741C8800C0E7DC /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FD7C0622741C8800C0E7DC /* GridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +39,11 @@
 		12A3B69222849EC30054D3B1 /* ClientRecievedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRecievedData.swift; sourceTree = "<group>"; };
 		12A3B6942284A9020054D3B1 /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
 		12A3B6962284AC3A0054D3B1 /* BattleshipGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleshipGame.swift; sourceTree = "<group>"; };
-		B9FD7C0622741C8800C0E7DC /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		B95EBAF822742D5D00364682 /* playerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerBoard.swift; sourceTree = "<group>"; };
+		B95EBAFA22742D6800364682 /* enemyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enemyBoard.swift; sourceTree = "<group>"; };
+		B95EBAFC22742E2200364682 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		B95EBAFE22742F2300364682 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		B9FD7C0622741C8800C0E7DC /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +110,13 @@
 		B9FD7C0522741C5500C0E7DC /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				B9FD7C0622741C8800C0E7DC /* Board.swift */,
+				B9FD7C0622741C8800C0E7DC /* GridView.swift */,
 				12A3B6942284A9020054D3B1 /* Ship.swift */,
 				12A3B6962284AC3A0054D3B1 /* BattleshipGame.swift */,
+				B95EBAF822742D5D00364682 /* playerBoard.swift */,
+				B95EBAFA22742D6800364682 /* enemyBoard.swift */,
+				B95EBAFC22742E2200364682 /* Board.swift */,
+				B95EBAFE22742F2300364682 /* Square.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -182,13 +194,17 @@
 			files = (
 				12A3B6972284AC3A0054D3B1 /* BattleshipGame.swift in Sources */,
 				12A3B68E22849E510054D3B1 /* ClientProtocols.swift in Sources */,
+				B95EBAFD22742E2200364682 /* Board.swift in Sources */,
 				12A3B6952284A9020054D3B1 /* Ship.swift in Sources */,
 				12A3B67822849D610054D3B1 /* ViewController.swift in Sources */,
+				B95EBAFB22742D6800364682 /* enemyBoard.swift in Sources */,
 				12A3B67622849D610054D3B1 /* AppDelegate.swift in Sources */,
 				12A3B69322849EC30054D3B1 /* ClientRecievedData.swift in Sources */,
-				B9FD7C0722741C8800C0E7DC /* Board.swift in Sources */,
+				B9FD7C0722741C8800C0E7DC /* GridView.swift in Sources */,
+				B95EBAFF22742F2300364682 /* Square.swift in Sources */,
 				12A3B68C22849E170054D3B1 /* Client.swift in Sources */,
 				12A3B69022849E840054D3B1 /* ClientListenerProtocol.swift in Sources */,
+				B95EBAF922742D5D00364682 /* playerBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
