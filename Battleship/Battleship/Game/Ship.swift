@@ -10,16 +10,16 @@ import Foundation
 
 class Ship{
     
-    //TODO: change this to squares instead of strings
-    var myShip:[String]
+    var myShip:[Square]
     
     // Is Sunk?
     // returns true if ship is sunk (all square states are hit)
     func isSunk()->Bool{
         var count = 0
         for square in myShip{
-//            if square.state == Square.state.hit
-            count += 1
+            if square.state == .hit {
+                count += 1
+            }
         }
         return count == myShip.count
     }
@@ -27,7 +27,7 @@ class Ship{
     init(length:Int){
         myShip = []
         for _ in 1...length{
-            myShip.append("square") //TODO: actually append Squares
+            myShip.append(Square())
         }
     }
 }

@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="1071.2" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Board Tester View Controller-->
         <scene sceneID="omu-lp-YD1">
             <objects>
-                <viewController id="I73-9p-jO0" sceneMemberID="viewController">
+                <viewController id="I73-9p-jO0" customClass="BoardTesterViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Twd-Lp-gT5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,14 +58,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HUv-Ro-FGK" customClass="PlayerGrid" customModule="Battleship" customModuleProvider="target">
+                                <rect key="frame" x="16" y="125" width="343" height="343"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cqn-IT-jxO"/>
                     </view>
+                    <connections>
+                        <outlet property="testingGrid" destination="HUv-Ro-FGK" id="11n-mt-OwA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lof-G7-fg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1956" y="134"/>
+            <point key="canvasLocation" x="1956" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gjZ-iJ-ObG">
@@ -88,7 +96,7 @@
         <!--View Controller Connect To Server-->
         <scene sceneID="rYV-3S-ieL">
             <objects>
-                <viewController id="RY1-uY-U8G" customClass="ViewControllerConnectToServer" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RY1-uY-U8G" customClass="ViewControllerConnectToServer" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JFe-T0-FpN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

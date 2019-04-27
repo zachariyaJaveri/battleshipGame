@@ -12,22 +12,24 @@ import UIKit
 class Board {
     
     var squareBoard = [String:[Square]]()
-    private let letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-    var boardSize:Int
+    static let letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var numRows:Int
+    var numCols:Int
     
     func dumpBoard() {
         print(squareBoard)
     }
     
-    init(boardLength len:Int, boardWidth wid:Int) {
-        boardSize = letters.count
-        for row in 0...len {
+    init(rows:Int, cols:Int) {
+        numRows = rows
+        numCols = cols
+        for row in 0...rows - 1 {
             //Make a row
-            squareBoard[letters[row]] = [Square]()
+            squareBoard[Board.letters[row]] = [Square]()
             
-            for _ in 0...wid {
+            for _ in 0...cols - 1 {
                 //Add columns
-                squareBoard[letters[row]]?.append(Square(X:1,Y:1,size:1,isClickable:false)) //TODO - I put random numbers so it won't complain
+                squareBoard[Board.letters[row]]?.append(Square())
             }
         }
     }

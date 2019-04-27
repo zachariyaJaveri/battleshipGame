@@ -22,6 +22,7 @@
 		B95EBAFB22742D6800364682 /* EnemyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFA22742D6800364682 /* EnemyGrid.swift */; };
 		B95EBAFD22742E2200364682 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFC22742E2200364682 /* Board.swift */; };
 		B95EBAFF22742F2300364682 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFE22742F2300364682 /* Square.swift */; };
+		B95EBB022274DA4A00364682 /* BoardTesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBB012274DA4A00364682 /* BoardTesterViewController.swift */; };
 		B9FD7C0722741C8800C0E7DC /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FD7C0622741C8800C0E7DC /* GridView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		B95EBAFA22742D6800364682 /* EnemyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyGrid.swift; sourceTree = "<group>"; };
 		B95EBAFC22742E2200364682 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		B95EBAFE22742F2300364682 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		B95EBB012274DA4A00364682 /* BoardTesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTesterViewController.swift; sourceTree = "<group>"; };
 		B9FD7C0622741C8800C0E7DC /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 		12A3B67422849D610054D3B1 /* Battleship */ = {
 			isa = PBXGroup;
 			children = (
+				B95EBB002274DA2F00364682 /* testing */,
 				B9FD7C0522741C5500C0E7DC /* Game */,
 				12A3B69122849EAA0054D3B1 /* MakeConnection */,
 				12A3B68A22849DFD0054D3B1 /* SocketClient */,
@@ -105,6 +108,14 @@
 				12A3B69222849EC30054D3B1 /* ClientRecievedData.swift */,
 			);
 			path = MakeConnection;
+			sourceTree = "<group>";
+		};
+		B95EBB002274DA2F00364682 /* testing */ = {
+			isa = PBXGroup;
+			children = (
+				B95EBB012274DA4A00364682 /* BoardTesterViewController.swift */,
+			);
+			path = testing;
 			sourceTree = "<group>";
 		};
 		B9FD7C0522741C5500C0E7DC /* Game */ = {
@@ -194,6 +205,7 @@
 			files = (
 				12A3B6972284AC3A0054D3B1 /* BattleshipGame.swift in Sources */,
 				12A3B68E22849E510054D3B1 /* ClientProtocols.swift in Sources */,
+				B95EBB022274DA4A00364682 /* BoardTesterViewController.swift in Sources */,
 				B95EBAFD22742E2200364682 /* Board.swift in Sources */,
 				12A3B6952284A9020054D3B1 /* Ship.swift in Sources */,
 				12A3B67822849D610054D3B1 /* ViewController.swift in Sources */,
