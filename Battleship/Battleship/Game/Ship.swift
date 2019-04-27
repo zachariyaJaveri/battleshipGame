@@ -18,8 +18,8 @@ class Ship{
     func isSunk()->Bool{
         var count = 0
         for square in myShip{
-            //TODO: if square.state == Square.state.hit
-            // count ++
+//            if square.state == Square.state.hit
+            count += 1
         }
         return count == myShip.count
     }

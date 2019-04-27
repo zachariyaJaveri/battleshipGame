@@ -8,22 +8,22 @@
 
 import UIKit
 
-class GridView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-    func drawGrid() {
-        //I don't know what type of board this is so don't draw it
+class GridView: UIView, drawsBoards {
+    
+    var myBoard:Board?
+    var currentlySelectedSquare:Square?
+    
+    func drawBoard(rect:CGRect) {
+        //Not sure what type of board I'm drawing, so just exit
         return
     }
+    
+    override func draw(_ rect: CGRect) {
+        drawBoard(rect: rect)
+    }
+ 
 }
 
-protocol drawableBoard {
-    func drawBoard()
+protocol drawsBoards {
+    func drawBoard(rect:CGRect)
 }

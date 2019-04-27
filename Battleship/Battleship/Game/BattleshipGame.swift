@@ -10,12 +10,14 @@ import Foundation
 
 class BattleshipGame{
     
+    let BOARD_LEN = 8
+    let BOARD_WID = 8
     var me = "Me"
     var you = "You"
     var myFleet:[Ship]
     var yourFleet:[Ship]
-    var myBoard:[String:[String]] //TODO:Change second string to Square
-    var yourBoard:[String:[String]] //TODO:Change second string to Square
+    var myBoard:Board
+    var yourBoard:Board
     
     var myPlayerNumber = 0
     var currentPlayer = 0
@@ -47,7 +49,7 @@ class BattleshipGame{
         return true
     }
     
-    init(myFleet:[Ship], yourFleet:[Ship], myBoard:[String:[String]], yourBoard:[String:[String]]){
+    init(myFleet:[Ship], yourFleet:[Ship], myBoard:Board, yourBoard:Board){
         self.myFleet = myFleet
         self.yourFleet = yourFleet
         self.myBoard = myBoard

@@ -9,24 +9,11 @@
 import Foundation
 import UIKit
 
-class Board:UIView, drawableBoard {
+class Board {
     
     var squareBoard = [String:[Square]]()
     private let letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     var boardSize:Int
-    
-    func drawBoard() {
-        return;
-    }
-    
-    // Draw all the Squares in the squareBoard hashmap
-    override func draw(_ rect: CGRect) {
-        for column in squareBoard{
-            for square in column.value{
-                square.draw()
-            }
-        }
-    }
     
     func dumpBoard() {
         print(squareBoard)

@@ -1,5 +1,5 @@
 //
-//  enemyBoard.swift
+//  playerBoard.swift
 //  Battleship
 //
 //  Created by Zachariya Javeri on 2019-04-27.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class enemyBoard:Board {
+class PlayerGrid:GridView {
     override func drawBoard() {
         return
     }
