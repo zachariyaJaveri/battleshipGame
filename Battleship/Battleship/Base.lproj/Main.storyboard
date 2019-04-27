@@ -267,7 +267,7 @@
                                 <state key="normal" title="Connect"/>
                                 <connections>
                                     <action selector="ConnectTap:" destination="RY1-uY-U8G" eventType="touchUpInside" id="ei6-fN-F5h"/>
-                                    <segue destination="d3J-nU-7M4" kind="presentation" id="OGO-F4-5LX"/>
+                                    <segue destination="d3J-nU-7M4" kind="presentation" identifier="gameScreenSegue" id="OGO-F4-5LX"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q4D-cg-FFs">

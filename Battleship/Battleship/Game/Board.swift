@@ -20,7 +20,7 @@ class Board {
         print(squareBoard)
     }
     
-    func fireAt(coordinate:Coordinate) -> Square.squareState {
+    func fireAt(coordinate:Coordinate) -> squareState {
         if let square = findSquareFromCoordinate(coord: coordinate) {
             switch square.state {
             case .nothing, .selected:

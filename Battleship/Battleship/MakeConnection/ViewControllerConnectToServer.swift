@@ -16,8 +16,10 @@ class ViewControllerConnectToServer: UIViewController, ClientConnectionDelegate 
     var username = "unknown"
     var client = Client()
     var playerNumber = 0
-    var playerBoard:Board?
+    var playerBoard:Board = Board(rows: 0, cols: 0)
     var playerShips:[Ship] = [Ship]()
+    
+    let GAME_SEGUE_NAME = "gameScreenSegue"
     
     var port:Int { return Int(PortTextField.text!) ?? 8080}
     @IBOutlet weak var URLTextField: UITextField!
@@ -90,5 +92,14 @@ class ViewControllerConnectToServer: UIViewController, ClientConnectionDelegate 
     // 🚀 we are about to segue to other page, set the client object on
     // that page to be the client that we connected to
     // ===================================================================
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == GAME_SEGUE_NAME {
+            let gameScreen = segue.destination as! GameViewController
+            gameScreen.client = client
+            gameScreen.me = username
+            gameScreen.playerBoard = self.playerBoard
+            gameScreen.playerShips = self.playerShips
+            gameScreen.myPlayerNumber = playerNumber
+        }
+    }
 }

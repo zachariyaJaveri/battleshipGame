@@ -11,6 +11,11 @@ import UIKit
 class GameViewController: UIViewController, GameServerViewDelegate {
     
     var gameServer:GameServerController = GameServerController()
+    var client:Client = Client()
+    var playerBoard:Board = Board(rows: 1, cols: 1)
+    var playerShips:[Ship] = [Ship]()
+    var me:String = "Me"
+    var myPlayerNumber = 0
     
     @IBOutlet weak var playerLabel: UILabel!
     

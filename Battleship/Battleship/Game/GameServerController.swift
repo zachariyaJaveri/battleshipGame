@@ -14,6 +14,7 @@ class GameServerController: ClientServerListenerDelegate {
     var gameServerViewDelegate:GameServerViewDelegate?
     var battleshipGame:BattleshipGame = BattleshipGame()
     var numberOfPlayers = 0 {didSet { gameServerViewDelegate?.numPlayersChangedUpdateView()}}
+    let serverData = ServerReceivedData()
     
     // ----------------------------------------------------
     // somebody connected
@@ -37,7 +38,34 @@ class GameServerController: ClientServerListenerDelegate {
     // we got data from the server
     // ----------------------------------------------------
     func clientListenerReceived(rawData data: String) {
-        //TODO
+        let receivedData = ClientReceivedData(rawData: data)
+        
+        switch receivedData.dataType {
+        case .listenerConnectionNumbers:
+            numberOfPlayers = Int(receivedData.userData) ?? 0
+        case .listenerDisconnection: break
+        case .connectionOrListenerError:
+            clientListenerReceived(errorString: receivedData.userData)
+        case .listenerSomeoneConnected: someBodyConnected(userData: receivedData)
+            
+        case .listenerUserdata:
+            processUserData(userData: receivedData)
+        default:
+            break
+        }
+    }
+    
+    func processUserData(userData data: ClientReceivedData) {
+        serverData.processData(data: data)
+        
+        switch serverData.dataType {
+        case .iam:
+            break
+        case .gameOver:
+            break
+        case .newState:
+            break
+        }
     }
     
     // -----------------------------------------------------------

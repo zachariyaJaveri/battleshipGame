@@ -15,7 +15,7 @@ class BattleshipGame{
     var me = "Me"
     var you = "You"
     var myFleet:[Ship] = []
-    var yourFleet:[Ship] = []
+    var yourFleet:[Ship] = [] //Are we even keeping this?
     var myBoard:Board?
     var yourBoard:Board?
     
@@ -25,15 +25,20 @@ class BattleshipGame{
     
     // Update Board
     // - Updates the state of a square on the board
-    func updateBoard(at:String, newState:String){
-        //TODO
+    func updateBoard(at:Coordinate, newState:squareState){
+        
+        if myTurn {
+            
+        }
+        else {
+            
+        }
     }
     
     // Check State
     // - returns the state of a particular square
-    func checkState(at:String)->String{ //TODO should return a Square.state
-        //TODO
-        return "state" //TODO so this line doesn't complain for now
+    func checkState(at:Coordinate)->squareState {
+        return (myBoard?.squareBoard[at.letter]![at.index].state)!
     }
     
     // Is Fleet Exhausted ?

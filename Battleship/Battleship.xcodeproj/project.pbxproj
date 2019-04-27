@@ -30,6 +30,7 @@
 		B95EBAFD22742E2200364682 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFC22742E2200364682 /* Board.swift */; };
 		B95EBAFF22742F2300364682 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBAFE22742F2300364682 /* Square.swift */; };
 		B95EBB022274DA4A00364682 /* BoardTesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBB012274DA4A00364682 /* BoardTesterViewController.swift */; };
+		B95EBB042274FA2100364682 /* ServerReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95EBB032274FA2100364682 /* ServerReceivedData.swift */; };
 		B9FD7C0722741C8800C0E7DC /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FD7C0622741C8800C0E7DC /* GridView.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		B95EBAFC22742E2200364682 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		B95EBAFE22742F2300364682 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		B95EBB012274DA4A00364682 /* BoardTesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTesterViewController.swift; sourceTree = "<group>"; };
+		B95EBB032274FA2100364682 /* ServerReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerReceivedData.swift; sourceTree = "<group>"; };
 		B9FD7C0622741C8800C0E7DC /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,7 @@
 				12BB04E0228F2B8500B63D21 /* CreationGrid.swift */,
 				12BB04E8228F711C00B63D21 /* GameServerController.swift */,
 				12BB04EA228F72BA00B63D21 /* GameServerViewDelegate.swift */,
+				B95EBB032274FA2100364682 /* ServerReceivedData.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				12A3B6972284AC3A0054D3B1 /* BattleshipGame.swift in Sources */,
 				12BB04DF228F1CFA00B63D21 /* SetupBoardViewController.swift in Sources */,
 				12A3B68E22849E510054D3B1 /* ClientProtocols.swift in Sources */,
+				B95EBB042274FA2100364682 /* ServerReceivedData.swift in Sources */,
 				B95EBB022274DA4A00364682 /* BoardTesterViewController.swift in Sources */,
 				12BB04E5228F54B000B63D21 /* GameViewController.swift in Sources */,
 				B95EBAFD22742E2200364682 /* Board.swift in Sources */,

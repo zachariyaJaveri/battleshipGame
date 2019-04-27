@@ -16,7 +16,7 @@ class GridView: UIView, drawsBoards {
     
     
     var currentlySelectedSquare:Square?
-    var curSelectedSquarePreviousState:Square.squareState = .nothing
+    var curSelectedSquarePreviousState:squareState = .nothing
     var squareLen:Double = 0
     var squareHeight:Double = 0
     var boardLen:Double = 0

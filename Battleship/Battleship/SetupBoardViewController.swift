@@ -84,7 +84,7 @@ class SetupBoardViewController: UIViewController {
         
         if segue.identifier == CONNECTION_SEGUE_NAME {
             let connectionScreen = segue.destination as! ViewControllerConnectToServer
-            connectionScreen.playerBoard = grid.myBoard
+            connectionScreen.playerBoard = grid.myBoard!
             connectionScreen.playerShips = myFleet
         }
     }
