@@ -16,6 +16,7 @@
 		12A3B68E22849E510054D3B1 /* ClientProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3B68D22849E510054D3B1 /* ClientProtocols.swift */; };
 		12A3B69022849E840054D3B1 /* ClientListenerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3B68F22849E840054D3B1 /* ClientListenerProtocol.swift */; };
 		12A3B69322849EC30054D3B1 /* ClientRecievedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3B69222849EC30054D3B1 /* ClientRecievedData.swift */; };
+		B9FD7C0722741C8800C0E7DC /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FD7C0622741C8800C0E7DC /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		12A3B68D22849E510054D3B1 /* ClientProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProtocols.swift; sourceTree = "<group>"; };
 		12A3B68F22849E840054D3B1 /* ClientListenerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientListenerProtocol.swift; sourceTree = "<group>"; };
 		12A3B69222849EC30054D3B1 /* ClientRecievedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRecievedData.swift; sourceTree = "<group>"; };
+		B9FD7C0622741C8800C0E7DC /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		12A3B67422849D610054D3B1 /* Battleship */ = {
 			isa = PBXGroup;
 			children = (
+				B9FD7C0522741C5500C0E7DC /* Game */,
 				12A3B69122849EAA0054D3B1 /* MakeConnection */,
 				12A3B68A22849DFD0054D3B1 /* SocketClient */,
 				12A3B67522849D610054D3B1 /* AppDelegate.swift */,
@@ -90,6 +93,14 @@
 				12A3B69222849EC30054D3B1 /* ClientRecievedData.swift */,
 			);
 			path = MakeConnection;
+			sourceTree = "<group>";
+		};
+		B9FD7C0522741C5500C0E7DC /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				B9FD7C0622741C8800C0E7DC /* Board.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +178,7 @@
 				12A3B67822849D610054D3B1 /* ViewController.swift in Sources */,
 				12A3B67622849D610054D3B1 /* AppDelegate.swift in Sources */,
 				12A3B69322849EC30054D3B1 /* ClientRecievedData.swift in Sources */,
+				B9FD7C0722741C8800C0E7DC /* Board.swift in Sources */,
 				12A3B68C22849E170054D3B1 /* Client.swift in Sources */,
 				12A3B69022849E840054D3B1 /* ClientListenerProtocol.swift in Sources */,
 			);
