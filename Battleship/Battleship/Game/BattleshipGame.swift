@@ -9,9 +9,10 @@
 import Foundation
 
 class BattleshipGame{
-    
+    //constants
     let BOARD_LEN = 8
     let BOARD_WID = 8
+    //variables
     var me = "Me"
     var you = "You"
     var myFleet:[Ship] = []
@@ -22,8 +23,11 @@ class BattleshipGame{
     var currentPlayer = 0
     var myTurn:Bool {return myPlayerNumber == currentPlayer}
     
+    //========================================================================
     // Update Enemy Board
-    // - Updates the state of a square on the board
+    // --Updates the state of a square on the enemy board
+    // --This is called after we get the "newState" of a tile
+    //========================================================================
     func updateEnemyBoard(at:Coordinate, newState:squareState){
         let dummySquare = Square(coordinate: at)
         for key in yourBoard!.squareBoard.keys {
@@ -36,7 +40,10 @@ class BattleshipGame{
             }
         }
     }
-    
+    //========================================================================
+    // FIRE!!!!!!
+    // --"Attacks" a square on our board, this is only called when WE are fired at
+    //========================================================================
     func fire(at: Coordinate)->squareState {
         if let board = myBoard {
             return board.fireAt(coordinate:at)
@@ -45,15 +52,18 @@ class BattleshipGame{
             return .miss
         }
     }
-    
-    // Check State
-    // - returns the state of a particular square
+    //========================================================================
+    // Check state
+    // --Returns the state of a particular square
+    //========================================================================
     func checkState(at:Coordinate)->squareState {
         return (myBoard?.squareBoard[at.letter]![at.index].state)!
     }
     
-    // Is Fleet Exhausted ?
-    // - returns true if all your ships have been destroyed
+    //========================================================================
+    // isFleetExhausted
+    // --Checks if all our ships are sunk or not
+    //========================================================================
     func isFleetExhausted()->Bool{
         for ship in myFleet{
             if !ship.isSunk(){

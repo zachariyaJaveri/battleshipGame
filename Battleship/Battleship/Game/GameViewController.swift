@@ -29,9 +29,14 @@ class GameViewController: UIViewController, GameServerViewDelegate {
     @IBOutlet weak var enemyLabel: UILabel!
     @IBOutlet weak var fireBtn: UIButton!
     
+    //========================================================================
+    // "Fires" at a selected square if there is one
+    //========================================================================
     @IBAction func fireBtnClick(_ sender: UIButton) {
+        //We can only select squares on the enemyGrid
         if let squareToFireAt = enemyGrid!.currentlySelectedSquare {
-            print("I AM FIRING")
+//            print("I AM FIRING")
+            //Tell the server this is where we want to fire at
             gameServer.fireAt(coord: squareToFireAt.coordinate)
         }
         else {
@@ -61,15 +66,19 @@ class GameViewController: UIViewController, GameServerViewDelegate {
     func gameServerErrorReceived() {
         dismiss(animated: true, completion: nil)
     }
-
+    //========================================================================
+    // Handle what happens when we get data from the server
+    //========================================================================
     func newUserDataRecieved(type: ServerReceivedData.receivedDataType, data: [String]) {
         
         switch type {
         case .iam:
+            //We're just learning who our opponent is
             //update labels
             playerLabel.text = data[0]
             enemyLabel.text = data[1]
             
+            //Set up for the game :)
             if gameServer.battleshipGame.myTurn {
                 statusLabel.text = "It's my turn to fire!"
                 fireBtn.isEnabled = true
@@ -80,14 +89,19 @@ class GameViewController: UIViewController, GameServerViewDelegate {
             }
             break
         case .fireAt:
+            //We were fired at! update the board
             playerGrid.myBoard = gameServer.battleshipGame.myBoard
             
             break
         case .gameOver:
+            //One person has lost all their ships
             statusLabel.text = "\(data[0]) is the winner!"
+            performSegue(withIdentifier: SCORE_SCREEN_SEGUE_NAME, sender: self)
             break
         case .newState:
-            //it's our turn, so update the enemy grid
+            
+            //it's our turn, so we got the "newState" for an enemy piece
+            //We switch turns after this, so the logic will seem backwards
             if gameServer.battleshipGame.myTurn {
                 enemyGrid.myBoard = gameServer.battleshipGame.yourBoard
                 //No longer our turn
@@ -105,7 +119,9 @@ class GameViewController: UIViewController, GameServerViewDelegate {
         }
         
     }
-
+    //========================================================================
+    // We connected
+    //========================================================================
     func gameServerConnectionRecieved(player: String) {
         playerLabel.text = player
     }
@@ -114,26 +130,19 @@ class GameViewController: UIViewController, GameServerViewDelegate {
     // update the view when number of players changes
     // ----------------------------------------------------
     func numPlayersChangedUpdateView() {
+        //Are we alone?
         if gameServer.numberOfPlayers == 2 {
+            //We have a friend, that we must now annihilate :(
             showToast(message: "THERE ARE 2 PLAYERS")
             statusLabel.text = ""
             playerLabel.text = "\(gameServer.battleshipGame.me)"
             enemyLabel.text = "\(gameServer.battleshipGame.you)"
         }
         else {
+            //I'm all alone
             showToast(message: "Only 1 player")
             statusLabel.text = "waiting for another player to connect"
             playerLabel.text = "\(gameServer.battleshipGame.me)"
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == SCORE_SCREEN_SEGUE_NAME {
-            
-        }
-    }
- 
-
 }

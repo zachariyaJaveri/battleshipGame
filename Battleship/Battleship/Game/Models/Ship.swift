@@ -9,11 +9,13 @@
 import Foundation
 
 class Ship{
-    
+    //VARIABLES
     var myShip:[Square] = [Square]()
     
+    //========================================================================
     // Is Sunk?
-    // returns true if ship is sunk (all square states are hit)
+    // returns true if all squares are hit
+    //========================================================================
     func isSunk()->Bool{
         var count = 0
         for square in myShip{
@@ -23,7 +25,9 @@ class Ship{
         }
         return count == myShip.count
     }
-    
+    //========================================================================
+    // INIT, passed the squares that represent the ship
+    //========================================================================
     init(squares myShip:[Square]) {
         self.myShip = myShip
     }

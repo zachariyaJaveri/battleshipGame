@@ -10,18 +10,28 @@ import Foundation
 import UIKit
 
 class Board {
-    
+    //========================================================================
+    // Global variables
+    //========================================================================
     var squareBoard = [String:[Square]]()
     static let letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     var numRows:Int
     var numCols:Int
-    
+    //========================================================================
+    // Prints the current board (For debug purposes)
+    //========================================================================
     func dumpBoard() {
         print(squareBoard)
     }
-    
+    //========================================================================
+    // Given a coordinate, finds the associated square and updates its state
+    //      depending on what it was before
+    // --Returns: The new state of the square
+    //========================================================================
     func fireAt(coordinate:Coordinate) -> squareState {
+        //Find the square in the board
         if let square = findSquareFromCoordinate(coord: coordinate) {
+            //Only change the state if it's nothing or a ship
             switch square.state {
             case .nothing:
                 square.state = .miss
@@ -38,8 +48,12 @@ class Board {
         
         return .miss
     }
-    
+    //========================================================================
+    // Goes through the board and finds the square for the coordinate
+    //========================================================================
     func findSquareFromCoordinate(coord:Coordinate) -> Square? {
+        //This is not the best implementation, but I don't have time to modify it
+        // The best implementation would just use the coordinate letter and index
         let dummySquare = Square(coordinate: coord)
         
         for key in squareBoard.keys {
@@ -53,7 +67,9 @@ class Board {
         
         return nil
     }
-    
+    //========================================================================
+    // Creates a board based on the provided size
+    //========================================================================
     init(rows:Int, cols:Int) {
         numRows = rows
         numCols = cols

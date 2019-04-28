@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 class EnemyGrid:GridView {
+    //========================================================================
+    // Handle what happens when the grid is touched
+    //========================================================================
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let spot = touches.first
         let location = spot!.location(in: self)
@@ -19,12 +22,14 @@ class EnemyGrid:GridView {
             //The coordinate is in the grid on the board
             switch currentSquare.state {
             case .nothing:
+                //Is something selected already?
                 if let curSquare = currentlySelectedSquare {
+                    //It's possible that the square has been modified since its selection
                     if curSquare.state == .selected {
                         curSquare.state = .nothing
                     }
                 }
-                
+                //Select this square
                 currentSquare.state = .selected
                 currentlySelectedSquare = currentSquare
                 break
@@ -35,7 +40,9 @@ class EnemyGrid:GridView {
         }
         setNeedsDisplay()
     }
-    
+    //========================================================================
+    // Draws a single square
+    //========================================================================
     override func drawSquare(x:Double, y:Double, squareToDraw:Square) {
         let box = CGRect(x: x, y: y, width: squareLen, height: squareHeight)
         let path = UIBezierPath(rect: box)
@@ -49,6 +56,7 @@ class EnemyGrid:GridView {
             UIColor.blue.setFill()
             break
         case .ship:
+            //Don't show the enemy ships
             UIColor.white.setFill()
             break
         case .nothing:

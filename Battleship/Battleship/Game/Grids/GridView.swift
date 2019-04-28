@@ -10,11 +10,11 @@ import UIKit
 
 class GridView: UIView, drawsBoards {
     func drawSquare(x:Double, y:Double, squareToDraw:Square) {
-        //not sure how to draw squares, just return
+        //not sure how to draw squares for a plain grid, just return
         return
     }
     
-    
+    //Global variables
     var currentlySelectedSquare:Square?
     var curSelectedSquarePreviousState:squareState = .nothing
     var squareLen:Double = 0
@@ -22,6 +22,7 @@ class GridView: UIView, drawsBoards {
     var boardLen:Double = 0
     var boardHeight:Double = 0
     var hasDrawnLettersAndNumbers:Bool = false
+    //When the board is set, reset the widths and heights and redraw the grid
     var myBoard:Board? {
         didSet {
             // +1 because we need a "square" to show a letter and number on the board
@@ -36,18 +37,22 @@ class GridView: UIView, drawsBoards {
             setNeedsDisplay()
         }
     }
-    
+    //========================================================================
+    // Draw a board as a grid
+    //========================================================================
     func drawBoard(rect:CGRect) {
         //Handle lettering and numbering
-        //Only have to do it if it hasn't been done before? (I'll find out soon enough)
+        //Only have to do it if it hasn't been done before
         if !hasDrawnLettersAndNumbers {
             drawLettersAndNumbers(rect:rect)
         }
         
-        //Draw the board as a grid
+        //Go through our board and draw it as a grid
         for key in (myBoard?.squareBoard.keys)! {
             //make a "square"
+            //The keys are not in order, so determine where they belong based on where they appear in "letters"
             let rowIndex = Board.letters.firstIndex(of: key)!
+            //Go through all the squares for the row
             for col in (myBoard?.squareBoard[key]!.indices)! {
                 //get the square from the board
                 if let squareToDraw = myBoard?.squareBoard[key]![col] {
@@ -56,12 +61,16 @@ class GridView: UIView, drawsBoards {
             }
         }
     }
-    
+    //========================================================================
+    // Adds the letters and the numbers on the side of the grid
+    //========================================================================
     private func drawLettersAndNumbers(rect:CGRect) {
-        
+        //These should be set, but to make life easier...
         if let boardRows = myBoard?.numRows, let boardCols = myBoard?.numCols {
             //draw numbers
             for row in 1...boardRows {
+                //Make the "Square" that the label is drawn into
+                //SquareLen / 3 centres the number well
                 let squareForLabel = CGRect(x: (squareLen * Double(row)) + (squareLen / 3), y: 0.0, width: squareLen, height: squareHeight)
                 let labelToAdd = UILabel(frame: squareForLabel)
                 //TODO: MAKE NICE
@@ -72,6 +81,7 @@ class GridView: UIView, drawsBoards {
             
             //draw letters
             for col in 1...boardCols {
+                //Create the rectangle where the label will go
                 let squareForLabel = CGRect(x: 0, y: squareLen * Double(col), width: squareLen, height: squareHeight)
                 let labelToAdd = UILabel(frame: squareForLabel)
                 //TODO: MAKE PRETTY
@@ -82,11 +92,16 @@ class GridView: UIView, drawsBoards {
         }
         hasDrawnLettersAndNumbers = true
     }
-    
+    //========================================================================
+    // DRAW, just calls drawBoard
+    //========================================================================
     override func draw(_ rect: CGRect) {
         drawBoard(rect: rect)
     }
-    
+    //========================================================================
+    // Finds a Square in a board depending on where you clicked
+    // --Returns: the square that was clicked
+    //========================================================================
     func findSquareInBoard(spot:CGPoint) -> Square? {
         //Find out which square it's in
         let xSquare = Double(spot.x) / squareLen
@@ -110,7 +125,9 @@ class GridView: UIView, drawsBoards {
         return myBoard?.squareBoard[letter]![squareIndex]
     }
 }
-
+//========================================================================
+// PROTOCOL THAT SAYS THAT IT DRAWS BOARDS
+//========================================================================
 protocol drawsBoards {
     func drawSquare(x:Double, y:Double, squareToDraw:Square)
 }

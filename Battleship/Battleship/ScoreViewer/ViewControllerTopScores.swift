@@ -8,28 +8,80 @@
 
 import UIKit
 
-class ViewControllerTopScores: UIViewController {
-
+class ViewControllerTopScores: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    //GLOBALS
+    private var topScore = 0
     private(set) var data = [battleshipScoreAndName]()
     
+    //CONSTANTS
+    private let NORMAL_CELL_NAME = "normalCell"
+    private let WINNER_CELL_NAME = "winnerCell"
+    
+    private let WINNER_CELL_HEIGHT:CGFloat = 70
+    private let NORMAL_CELL_HEIGHT:CGFloat = 40
+    //OUTLETS
+    @IBOutlet weak var scoresTable: UITableView!
+    //========================================================================
+    // View did load
+    //========================================================================
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         data = battleshipScoreAndName.getAll()
         
         //Data isn't stored in order
         data.sort { return $0.score > $1.score }
+        
+        topScore = data[0].score
+    }
+    //========================================================================
+    // Goes back to the previous page
+    //========================================================================
+    @IBAction func goBackToPreviousPage(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    //========================================================================
+    // Get the amount of rows that we need
+    //========================================================================
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //========================================================================
+    // Get the cell for the current row
+    //========================================================================
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Find out if we are a winner or not
+        let currentScoreAndName = data[indexPath.row]
+        
+        if currentScoreAndName.score == topScore {
+            //winning cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: WINNER_CELL_NAME, for: indexPath) as! TableViewCellWinnerCell
+            cell.nameLabel.text = currentScoreAndName.name
+            cell.scoreLabel.text = String(currentScoreAndName.score)
+            return cell
+        }
+        else {
+            //regular cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: NORMAL_CELL_NAME, for: indexPath) as! TableViewCellNormalCell
+            cell.nameLabel.text = currentScoreAndName.name
+            cell.scoreLabel.text = String(currentScoreAndName.score)
+            return cell
+        }
     }
-    */
+    //========================================================================
+    // Get the height for the current row
+    //========================================================================
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let score = data[indexPath.row].score
+        if score == topScore {
+            return WINNER_CELL_HEIGHT
+        }
+        else {
+            return NORMAL_CELL_HEIGHT
+        }
+    }
+
+    
 
 }
