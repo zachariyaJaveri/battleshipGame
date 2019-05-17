@@ -10,7 +10,7 @@ import Foundation
 
 class Ship{
     
-    var myShip:[Square]
+    var myShip:[Square] = [Square]()
     
     // Is Sunk?
     // returns true if ship is sunk (all square states are hit)
@@ -24,10 +24,7 @@ class Ship{
         return count == myShip.count
     }
     
-    init(length:Int){
-        myShip = []
-        for _ in 1...length{
-            myShip.append(Square())
-        }
+    init(squares myShip:[Square]) {
+        self.myShip = myShip
     }
 }

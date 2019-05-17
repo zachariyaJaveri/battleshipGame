@@ -19,14 +19,18 @@ class GridView: UIView, drawsBoards {
     var curSelectedSquarePreviousState:Square.squareState = .nothing
     var squareLen:Double = 0
     var squareHeight:Double = 0
+    var boardLen:Double = 0
+    var boardHeight:Double = 0
     var hasDrawnLettersAndNumbers:Bool = false
     var myBoard:Board? {
         didSet {
             // +1 because we need a "square" to show a letter and number on the board
             squareLen = Double(self.bounds.width) / Double(myBoard!.numRows + 1)
-            squareHeight = Double(self.bounds.height) / Double(myBoard!.numCols + 1)
+            squareHeight = squareLen
             print("THIS IS SQUARE LENGTH: \(squareLen)")
             print("THIS IS SQUARE HEIGHT: \(squareHeight)")
+            boardLen = squareLen * Double((myBoard?.numCols)! + 1)
+            boardHeight = squareHeight * Double((myBoard?.numRows)! + 1)
             setNeedsDisplay()
         }
     }
@@ -44,8 +48,9 @@ class GridView: UIView, drawsBoards {
             let rowIndex = Board.letters.firstIndex(of: key)!
             for col in (myBoard?.squareBoard[key]!.indices)! {
                 //get the square from the board
-                let squareToDraw = myBoard?.squareBoard[key]![col] ?? Square()
-                drawSquare(x: squareLen * Double(col + 1), y: squareLen * Double(rowIndex + 1), squareToDraw: squareToDraw)
+                if let squareToDraw = myBoard?.squareBoard[key]![col] {
+                    drawSquare(x: squareLen * Double(col + 1), y: squareLen * Double(rowIndex + 1), squareToDraw: squareToDraw)
+                }
             }
         }
     }
@@ -53,11 +58,13 @@ class GridView: UIView, drawsBoards {
     private func drawLettersAndNumbers(rect:CGRect) {
         
         if let boardRows = myBoard?.numRows, let boardCols = myBoard?.numCols {
-            //draw letters
+            //draw numbers
             for row in 1...boardRows {
-                let squareForLabel = CGRect(x: squareLen * Double(row), y: 0.0, width: squareLen, height: squareHeight)
+                let squareForLabel = CGRect(x: (squareLen * Double(row)) + (squareLen / 3), y: 0.0, width: squareLen, height: squareHeight)
                 let labelToAdd = UILabel(frame: squareForLabel)
+                //TODO: MAKE NICE
                 labelToAdd.text = String(row - 1)
+                //
                 self.addSubview(labelToAdd)
             }
             
@@ -65,10 +72,13 @@ class GridView: UIView, drawsBoards {
             for col in 1...boardCols {
                 let squareForLabel = CGRect(x: 0, y: squareLen * Double(col), width: squareLen, height: squareHeight)
                 let labelToAdd = UILabel(frame: squareForLabel)
+                //TODO: MAKE PRETTY
                 labelToAdd.text = Board.letters[col - 1]
+                //
                 self.addSubview(labelToAdd)
             }
         }
+        hasDrawnLettersAndNumbers = true
         
     }
     
@@ -100,7 +110,7 @@ class GridView: UIView, drawsBoards {
         setNeedsDisplay()
     }
     
-    private func findSquareInBoard(spot:CGPoint) -> Square? {
+    func findSquareInBoard(spot:CGPoint) -> Square? {
         //Find out which square it's in
         let xSquare = Double(spot.x) / squareLen
         let ySquare = Double(spot.y) / squareHeight
@@ -109,7 +119,7 @@ class GridView: UIView, drawsBoards {
         
         //Account for the edges
         //Edges are on the left and the top
-        if xSquare < 1 || ySquare < 1 {
+        if xSquare < 1 || ySquare < 1 || Double(spot.y) > boardHeight || Double(spot.x) > boardLen{
             print("NOT IN GRID")
             return nil
         }

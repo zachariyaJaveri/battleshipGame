@@ -19,4 +19,18 @@ class Square {
     }
     
     var state:squareState = .nothing
+    var coordinate:Coordinate
+    init(coordinate:Coordinate) {
+        self.coordinate = coordinate
+    }
+}
+
+struct Coordinate {
+    var letter:String
+    var index:Int
+    
+    init(letter:String, index:Int) {
+        self.letter = letter
+        self.index = index
+    }
 }

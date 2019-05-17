@@ -27,9 +27,9 @@ class Board {
             //Make a row
             squareBoard[Board.letters[row]] = [Square]()
             
-            for _ in 0...cols - 1 {
+            for col in 0...cols - 1 {
                 //Add columns
-                squareBoard[Board.letters[row]]?.append(Square())
+                squareBoard[Board.letters[row]]?.append(Square(coordinate: Coordinate(letter: Board.letters[row], index: col)))
             }
         }
     }

@@ -17,11 +17,14 @@ class BoardTesterViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        testBoard = Board(rows: 4, cols: 4)
+        testBoard = Board(rows: 9, cols: 9)
         testingGrid.myBoard = testBoard!
     }
     
 
+    @IBAction func dismiss(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var testingGrid: PlayerGrid!
     /*
     // MARK: - Navigation
