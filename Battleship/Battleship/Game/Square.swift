@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class Square {
+class Square:Equatable {
+    static func == (lhs: Square, rhs: Square) -> Bool {
+        return lhs.coordinate.index == rhs.coordinate.index && lhs.coordinate.letter == rhs.coordinate.letter
+    }
+    
     enum squareState:String {
         case nothing
         case ship

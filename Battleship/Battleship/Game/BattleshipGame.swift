@@ -14,10 +14,10 @@ class BattleshipGame{
     let BOARD_WID = 8
     var me = "Me"
     var you = "You"
-    var myFleet:[Ship]
-    var yourFleet:[Ship]
-    var myBoard:Board
-    var yourBoard:Board
+    var myFleet:[Ship] = []
+    var yourFleet:[Ship] = []
+    var myBoard:Board?
+    var yourBoard:Board?
     
     var myPlayerNumber = 0
     var currentPlayer = 0
@@ -47,12 +47,5 @@ class BattleshipGame{
         }
         //All your ships have been destroyed
         return true
-    }
-    
-    init(myFleet:[Ship], yourFleet:[Ship], myBoard:Board, yourBoard:Board){
-        self.myFleet = myFleet
-        self.yourFleet = yourFleet
-        self.myBoard = myBoard
-        self.yourBoard = yourBoard
     }
 }

@@ -20,6 +20,40 @@ class Board {
         print(squareBoard)
     }
     
+    func fireAt(coordinate:Coordinate) -> Square.squareState {
+        if let square = findSquareFromCoordinate(coord: coordinate) {
+            switch square.state {
+            case .nothing, .selected:
+                square.state = .miss
+                break
+            case .ship:
+                square.state = .hit
+                break
+            default:
+                break
+            }
+            
+            return square.state
+        }
+        
+        return .miss
+    }
+    
+    func findSquareFromCoordinate(coord:Coordinate) -> Square? {
+        let dummySquare = Square(coordinate: coord)
+        
+        for key in squareBoard.keys {
+            let squares = squareBoard[key]
+            for square in squares! {
+                if square == dummySquare {
+                    return square
+                }
+            }
+        }
+        
+        return nil
+    }
+    
     init(rows:Int, cols:Int) {
         numRows = rows
         numCols = cols
