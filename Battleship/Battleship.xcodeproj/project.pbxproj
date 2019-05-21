@@ -75,6 +75,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		121FDB2822947C1D00088F37 /* SetupBoard */ = {
+			isa = PBXGroup;
+			children = (
+				12BB04E0228F2B8500B63D21 /* CreationGrid.swift */,
+				12BB04DE228F1CFA00B63D21 /* SetupBoardViewController.swift */,
+			);
+			path = SetupBoard;
+			sourceTree = "<group>";
+		};
+		121FDB2922947C4000088F37 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B95EBAFC22742E2200364682 /* Board.swift */,
+				B95EBAFE22742F2300364682 /* Square.swift */,
+				12A3B6942284A9020054D3B1 /* Ship.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		121FDB2A22947C5A00088F37 /* Grids */ = {
+			isa = PBXGroup;
+			children = (
+				B9FD7C0622741C8800C0E7DC /* GridView.swift */,
+				B95EBAF822742D5D00364682 /* PlayerGrid.swift */,
+				B95EBAFA22742D6800364682 /* EnemyGrid.swift */,
+			);
+			path = Grids;
+			sourceTree = "<group>";
+		};
 		12A3B66922849D610054D3B1 = {
 			isa = PBXGroup;
 			children = (
@@ -104,7 +133,6 @@
 				12A3B67F22849D620054D3B1 /* Assets.xcassets */,
 				12A3B68122849D620054D3B1 /* LaunchScreen.storyboard */,
 				12A3B68422849D620054D3B1 /* Info.plist */,
-				12BB04DE228F1CFA00B63D21 /* SetupBoardViewController.swift */,
 			);
 			path = Battleship;
 			sourceTree = "<group>";
@@ -140,15 +168,11 @@
 		B9FD7C0522741C5500C0E7DC /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				121FDB2A22947C5A00088F37 /* Grids */,
+				121FDB2922947C4000088F37 /* Models */,
+				121FDB2822947C1D00088F37 /* SetupBoard */,
 				12BB04E4228F54B000B63D21 /* GameViewController.swift */,
-				B9FD7C0622741C8800C0E7DC /* GridView.swift */,
-				12A3B6942284A9020054D3B1 /* Ship.swift */,
 				12A3B6962284AC3A0054D3B1 /* BattleshipGame.swift */,
-				B95EBAF822742D5D00364682 /* PlayerGrid.swift */,
-				B95EBAFA22742D6800364682 /* EnemyGrid.swift */,
-				B95EBAFC22742E2200364682 /* Board.swift */,
-				B95EBAFE22742F2300364682 /* Square.swift */,
-				12BB04E0228F2B8500B63D21 /* CreationGrid.swift */,
 				12BB04E8228F711C00B63D21 /* GameServerController.swift */,
 				12BB04EA228F72BA00B63D21 /* GameServerViewDelegate.swift */,
 				B95EBB032274FA2100364682 /* ServerReceivedData.swift */,

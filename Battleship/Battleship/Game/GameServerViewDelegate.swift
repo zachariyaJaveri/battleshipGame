@@ -14,7 +14,7 @@ import Foundation
 // =====================================================
 protocol GameServerViewDelegate:class{
     func gameServerErrorReceived()
-    func newUserDataRecieved(type:String,data:[String])
+    func newUserDataRecieved(type:ServerReceivedData.receivedDataType,data:[String])
     func gameServerConnectionRecieved(player:String)
     func numPlayersChangedUpdateView()
 }

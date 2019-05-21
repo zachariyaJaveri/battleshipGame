@@ -19,10 +19,12 @@ class EnemyGrid:GridView {
             //The coordinate is in the grid on the board
             switch currentSquare.state {
             case .nothing:
-                //You can only select on nothing, so previous square is set back to nothing
-                if let previouslySelected = currentlySelectedSquare {
-                    previouslySelected.state = .nothing
+                if let curSquare = currentlySelectedSquare {
+                    if curSquare.state == .selected {
+                        curSquare.state = .nothing
+                    }
                 }
+                
                 currentSquare.state = .selected
                 currentlySelectedSquare = currentSquare
                 break

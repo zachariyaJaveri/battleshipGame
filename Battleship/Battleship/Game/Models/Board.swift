@@ -23,7 +23,7 @@ class Board {
     func fireAt(coordinate:Coordinate) -> squareState {
         if let square = findSquareFromCoordinate(coord: coordinate) {
             switch square.state {
-            case .nothing, .selected:
+            case .nothing:
                 square.state = .miss
                 break
             case .ship:

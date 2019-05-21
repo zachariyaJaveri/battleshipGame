@@ -15,7 +15,6 @@ class BattleshipGame{
     var me = "Me"
     var you = "You"
     var myFleet:[Ship] = []
-    var yourFleet:[Ship] = [] //Are we even keeping this?
     var myBoard:Board?
     var yourBoard:Board?
     
@@ -23,15 +22,27 @@ class BattleshipGame{
     var currentPlayer = 0
     var myTurn:Bool {return myPlayerNumber == currentPlayer}
     
-    // Update Board
+    // Update Enemy Board
     // - Updates the state of a square on the board
-    func updateBoard(at:Coordinate, newState:squareState){
-        
-        if myTurn {
-            
+    func updateEnemyBoard(at:Coordinate, newState:squareState){
+        let dummySquare = Square(coordinate: at)
+        for key in yourBoard!.squareBoard.keys {
+            let squares = yourBoard!.squareBoard[key]
+            for square in squares! {
+                if dummySquare == square {
+                    square.state = newState
+                    return
+                }
+            }
+        }
+    }
+    
+    func fire(at: Coordinate)->squareState {
+        if let board = myBoard {
+            return board.fireAt(coordinate:at)
         }
         else {
-            
+            return .miss
         }
     }
     

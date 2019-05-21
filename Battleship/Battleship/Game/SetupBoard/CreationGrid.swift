@@ -77,47 +77,64 @@ class CreationGrid:GridView {
     }
     
     func determineIfSquareAdjacent(squareToCheck:Square) -> Bool {
-        //Have any other sqaures been selected?
+        //Have any other squares been selected?
         if selectedSquares.count > 0 {
             //Check for only 1 square
             if let rows = rowOfSquares {
+                print("MORE THAN 1 SQUARE")
+                print("IS HORIZONTALLY ADJACENT? \(determineHorizontallyAdjacent(squareToCheck: squareToCheck))")
+                print("IS VERTICALLY ADJACENT? \(determineVerticallyAdjacent(squareToCheck: squareToCheck))")
                 //more than 1 square
                 //Are we working with horizontal or vertical?
                 if rows {
+                    print("CHECKING ROWS")
                     return determineHorizontallyAdjacent(squareToCheck:squareToCheck)
                 }
                 else {
+                    print("CHECKING COLUMNS")
                     return determineVerticallyAdjacent(squareToCheck:squareToCheck)
                 }
             }
             else {
                 //Only 1 square
                 //Figure out if this is a row of Squares or a column of Squares
+                print("ONLY 1 SQUARE")
                 print("IS HORIZONTALLY ADJACENT? \(determineHorizontallyAdjacent(squareToCheck: squareToCheck))")
                 print("IS VERTICALLY ADJACENT? \(determineVerticallyAdjacent(squareToCheck: squareToCheck))")
-                if determineHorizontallyAdjacent(squareToCheck: squareToCheck) {
-                    //It's a row of squares
-                    rowOfSquares = true
+                
+                let horizontal = determineHorizontallyAdjacent(squareToCheck: squareToCheck)
+                let vertical = determineVerticallyAdjacent(squareToCheck: squareToCheck)
+                
+                if horizontal && vertical {
+                    //NO DIAGONALS GODDANG IT
+                    rowOfSquares = nil
+                    return false
                 }
-                else if determineVerticallyAdjacent(squareToCheck: squareToCheck) {
-                    //it's a column of squares
+                else if horizontal {
+                    //it's a row of squares
+                    rowOfSquares = true
+                    return true
+                }
+                else if vertical {
                     rowOfSquares = false
+                    return true
                 }
                 else {
                     return false
                 }
                 
-                return true
             }
         }
         else {
             //No Squares have been selected yet
+            print("NO SQUARES")
             rowOfSquares = nil
             return true
         }
     }
     
     func determineHorizontallyAdjacent(squareToCheck:Square) -> Bool{
+        print("HORIZONTAL")
         var firstSquare:Square?
         var lastSquare:Square?
         
@@ -137,6 +154,12 @@ class CreationGrid:GridView {
                 lastSquare = square
             }
         }
+        print("THIS IS THE FIRST SQUARE: \(firstSquare!.toString())")
+        print("THIS IS THE LAST SQUARE: \(lastSquare!.toString())")
+        
+        if firstSquare!.coordinate.letter != squareToCheck.coordinate.letter {
+            return false
+        }
         
         //Check if it's next to the first square
         //Check only the left side (the lastSquare handles the right)
@@ -150,6 +173,7 @@ class CreationGrid:GridView {
     }
     
     func determineVerticallyAdjacent(squareToCheck:Square) -> Bool{
+        print("VERTICAL")
         var firstSquare:Square?
         var lastSquare:Square?
         
@@ -174,11 +198,16 @@ class CreationGrid:GridView {
                 lastSquare = square
             }
         }
+        print("THIS IS THE FIRST SQUARE: \(firstSquare!.toString())")
+        print("THIS IS THE LAST SQUARE: \(lastSquare!.toString())")
         //Get the letter of the index for our first, last and current square
+        if firstSquare!.coordinate.index != squareToCheck.coordinate.index {
+            return false
+        }
+        
         let firstIndex = Board.letters.firstIndex(of: firstSquare!.coordinate.letter)
         let lastIndex = Board.letters.firstIndex(of: lastSquare!.coordinate.letter)
         let curIndex = Board.letters.firstIndex(of: squareToCheck.coordinate.letter)
-        
         
         //Check if it's next to the first square
         //Check only the left side (the lastSquare handles the right)

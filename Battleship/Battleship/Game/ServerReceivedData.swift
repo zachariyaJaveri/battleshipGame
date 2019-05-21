@@ -13,6 +13,7 @@ class ServerReceivedData {
     
     enum receivedDataType:String {
         case iam
+        case fireAt
         case newState
         case gameOver
     }
@@ -38,6 +39,8 @@ class ServerReceivedData {
         switch parts[0] {
         case "iam":
             dataType = .iam
+        case "fireAt":
+            dataType = .fireAt
         case "newState":
             dataType = .newState
         case "gameOver":

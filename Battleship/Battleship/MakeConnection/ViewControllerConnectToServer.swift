@@ -16,8 +16,8 @@ class ViewControllerConnectToServer: UIViewController, ClientConnectionDelegate 
     var username = "unknown"
     var client = Client()
     var playerNumber = 0
-    var playerBoard:Board = Board(rows: 0, cols: 0)
-    var playerShips:[Ship] = [Ship]()
+    var playerBoard:Board?
+    var playerShips:[Ship]?
     
     let GAME_SEGUE_NAME = "gameScreenSegue"
     
@@ -62,7 +62,7 @@ class ViewControllerConnectToServer: UIViewController, ClientConnectionDelegate 
         playerNumber = num
         username = name
         print ("CONNECTION DELEGATE: is performing handshake")
-        performSegue(withIdentifier: "toEchoAppSegue", sender: self)
+        performSegue(withIdentifier: GAME_SEGUE_NAME, sender: self)
     }
     
     // ===================================================================
@@ -96,9 +96,9 @@ class ViewControllerConnectToServer: UIViewController, ClientConnectionDelegate 
         if segue.identifier == GAME_SEGUE_NAME {
             let gameScreen = segue.destination as! GameViewController
             gameScreen.client = client
-            gameScreen.me = username
-            gameScreen.playerBoard = self.playerBoard
-            gameScreen.playerShips = self.playerShips
+            gameScreen.me = UsernameTextField?.text ?? ""
+            gameScreen.playerBoard = self.playerBoard!
+            gameScreen.playerShips = self.playerShips!
             gameScreen.myPlayerNumber = playerNumber
         }
     }

@@ -25,8 +25,10 @@ class GridView: UIView, drawsBoards {
     var myBoard:Board? {
         didSet {
             // +1 because we need a "square" to show a letter and number on the board
-            squareLen = Double(self.bounds.width) / Double(myBoard!.numRows + 1)
-            squareHeight = squareLen
+            print("THIS IS THE HEIGHT OF BOUNDS: \(self.bounds.height)")
+            print("THIS IS THE WIDTH OF BOUNDS: \(self.bounds.width)")
+            squareLen = Double(self.frame.width) / Double(myBoard!.numRows + 1)
+            squareHeight = Double(self.frame.height) / Double(myBoard!.numCols + 1)
             print("THIS IS SQUARE LENGTH: \(squareLen)")
             print("THIS IS SQUARE HEIGHT: \(squareHeight)")
             boardLen = squareLen * Double((myBoard?.numCols)! + 1)
@@ -34,12 +36,12 @@ class GridView: UIView, drawsBoards {
             setNeedsDisplay()
         }
     }
+    
     func drawBoard(rect:CGRect) {
         //Handle lettering and numbering
         //Only have to do it if it hasn't been done before? (I'll find out soon enough)
         if !hasDrawnLettersAndNumbers {
             drawLettersAndNumbers(rect:rect)
-            
         }
         
         //Draw the board as a grid
@@ -79,21 +81,18 @@ class GridView: UIView, drawsBoards {
             }
         }
         hasDrawnLettersAndNumbers = true
-        
     }
     
     override func draw(_ rect: CGRect) {
         drawBoard(rect: rect)
     }
     
-    
-    
     func findSquareInBoard(spot:CGPoint) -> Square? {
         //Find out which square it's in
         let xSquare = Double(spot.x) / squareLen
         let ySquare = Double(spot.y) / squareHeight
-        print("THIS IS THE X COORDINATE \(xSquare)")
-        print("THIS IS THE Y COORDINATE \(ySquare)")
+//        print("THIS IS THE X COORDINATE \(xSquare)")
+//        print("THIS IS THE Y COORDINATE \(ySquare)")
         
         //Account for the edges
         //Edges are on the left and the top
@@ -103,10 +102,10 @@ class GridView: UIView, drawsBoards {
         }
         
         let letter = Board.letters[Int(ySquare - 1)]
-        print("THIS IS THE LETTER \(letter)")
+//        print("THIS IS THE LETTER \(letter)")
         //Coordinates on the board are inverted
         let squareIndex = Int(xSquare - 1)
-        print("THIS IS THE INDEX \(squareIndex)")
+//        print("THIS IS THE INDEX \(squareIndex)")
         //Return the square associated with this coordinate
         return myBoard?.squareBoard[letter]![squareIndex]
     }

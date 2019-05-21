@@ -16,7 +16,7 @@ class SetupBoardViewController: UIViewController {
     let NUM_ROWS = 9
     let NUM_COLS = 9
     
-    var shipLengthsToPlace = [2, 3, 4, 5]
+    var shipLengthsToPlace = [2,3,4,5]
     var shipLengthIndex = 0
     var myFleet:[Ship] = [Ship]()
     
@@ -52,6 +52,7 @@ class SetupBoardViewController: UIViewController {
             updateLabels()
         }
     }
+    
     @IBAction func resetGrid(_ sender: UIButton) {
         //Start with a fresh board
         grid.myBoard = Board(rows: NUM_ROWS, cols: NUM_COLS)
@@ -79,6 +80,7 @@ class SetupBoardViewController: UIViewController {
         }
     }
     
+    //READY button clicked
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("I WAS PREPARED")
         
@@ -89,9 +91,6 @@ class SetupBoardViewController: UIViewController {
         }
     }
 }
-
-
-
 
 
 
