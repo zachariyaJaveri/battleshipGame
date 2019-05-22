@@ -10,22 +10,27 @@ import UIKit
 
 class SetupBoardViewController: UIViewController {
 
+    //Variables
     let shipsLeftMsg = "Ships left to place: "
     let currentShipSizeMsg = "Current ship size to place: "
     let CONNECTION_SEGUE_NAME = "serverConnectionSegue"
     let NUM_ROWS = 9
     let NUM_COLS = 9
     
-    var shipLengthsToPlace = [2,3,4,5]
+    var shipLengthsToPlace = [2]
     var shipLengthIndex = 0
     var myFleet:[Ship] = [Ship]()
     
+    //OUTLETS
     @IBOutlet weak var shipsLeftLbl: UILabel!
     @IBOutlet weak var curShipSizeLbl: UILabel!
     @IBOutlet weak var grid: CreationGrid!
     @IBOutlet weak var addShipBtn: UIButton!
     @IBOutlet weak var readyBtn: UIButton!
-    
+    //========================================================================
+    // VIEW DID LOAD
+    // --when the view finally loads
+    //========================================================================
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,13 +41,18 @@ class SetupBoardViewController: UIViewController {
         updateLabels()
         readyBtn.isEnabled = false
     }
-
+    //========================================================================
+    // ADD SHIP CLICK
+    // --Adds a ship to your fleet based on the squares you have selected
+    //========================================================================
     @IBAction func addShipClick(_ sender: UIButton) {
+        //Did they make a ship that's the right size?
         let squares = grid.selectedSquares
         if squares.count != shipLengthsToPlace[shipLengthIndex] {
             showToast(message: "Your ship is the wrong size!")
         }
         else {
+            //Turn all of these squares into a ship!
             for square in squares {
                 square.state = .ship
             }
@@ -52,7 +62,10 @@ class SetupBoardViewController: UIViewController {
             updateLabels()
         }
     }
-    
+    //========================================================================
+    // RESET GRID
+    // --Resets the grid
+    //========================================================================
     @IBAction func resetGrid(_ sender: UIButton) {
         //Start with a fresh board
         grid.myBoard = Board(rows: NUM_ROWS, cols: NUM_COLS)
@@ -63,7 +76,10 @@ class SetupBoardViewController: UIViewController {
         
         updateLabels()
     }
-    
+    //========================================================================
+    // UPDATE LABELS
+    // --Updates the "ships left" label and the "current ship length" label
+    //========================================================================
     func updateLabels() {
         //Update ships left
         shipsLeftLbl.text = shipsLeftMsg + String(shipLengthsToPlace.count - shipLengthIndex)
@@ -74,12 +90,16 @@ class SetupBoardViewController: UIViewController {
 
         }
         else {
+            //Nothing left to place, they are ready to play!
             curShipSizeLbl.text = "All ships placed!"
             addShipBtn.isEnabled = false
             readyBtn.isEnabled = true
         }
     }
-    
+    //========================================================================
+    // PREPARE
+    // --Preparing for segue to connection screen
+    //========================================================================
     //READY button clicked
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("I WAS PREPARED")

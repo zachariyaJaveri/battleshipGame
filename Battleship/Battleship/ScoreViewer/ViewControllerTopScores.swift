@@ -29,10 +29,18 @@ class ViewControllerTopScores: UIViewController, UITableViewDataSource, UITableV
         
         data = battleshipScoreAndName.getAll()
         
-        //Data isn't stored in order
-        data.sort { return $0.score > $1.score }
+        if data.count > 0 {
+            //Data isn't stored in order
+            data.sort { return $0.score > $1.score }
+            topScore = data[0].score
+        }
+        else {
+            topScore = 0
+        }
         
-        topScore = data[0].score
+        scoresTable.delegate = self
+        scoresTable.dataSource = self
+        scoresTable.reloadData()
     }
     //========================================================================
     // Goes back to the previous page

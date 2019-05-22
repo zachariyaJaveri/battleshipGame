@@ -13,6 +13,10 @@ class CreationGrid:GridView {
     var selectedSquares:[Square] = [Square]()
     var rowOfSquares:Bool?
     
+    //========================================================================
+    // DRAW SQUARE
+    // --draws and fills a single square
+    //========================================================================
     override func drawSquare(x: Double, y: Double, squareToDraw: Square) {
         let box = CGRect(x: x, y: y, width: squareLen, height: squareHeight)
         let path = UIBezierPath(rect: box)
@@ -38,7 +42,10 @@ class CreationGrid:GridView {
         path.fill()
         path.stroke()
     }
-    
+    //========================================================================
+    // TOUCHES ENDED
+    // --Handles what happens when a square on the grid is touched
+    //========================================================================
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let spot = touches.first
         let location = spot!.location(in: self)
@@ -49,21 +56,26 @@ class CreationGrid:GridView {
             switch currentSquare.state {
             case .nothing:
                 //You can only select on nothing, so previous square is set back to nothing
-                //Find out if square is adjacent
-                //Append to array?
-                //Change state to selected
-                print("THIS IS THE COORDINATE OF THE CURRENT SQUARE: \(currentSquare.coordinate)")
+                
+//                print("THIS IS THE COORDINATE OF THE CURRENT SQUARE: \(currentSquare.coordinate)")
+                
+                //Is this square in a row/col?
                 let squareIsAdjacent = determineIfSquareAdjacent(squareToCheck: currentSquare)
                 if(squareIsAdjacent) {
+                    //Add it to all the selected squares that we have
                     currentSquare.state = .selected
                     selectedSquares.append(currentSquare)
                 }
                 else {
+                    //Reset all the squares that were clicked back to nothing
                     for square in selectedSquares {
                         square.state = .nothing
                     }
+                    //We don't need them anymore
                     selectedSquares.removeAll()
+                    //Set to nil to indicate that we have less than 2 squares
                     rowOfSquares = nil
+                    //Start a new collection of selected squares
                     currentSquare.state = .selected
                     selectedSquares.append(currentSquare)
                 }
@@ -73,12 +85,17 @@ class CreationGrid:GridView {
                 break
             }
         }
+        //It's possible something changed, so reload the grid
         setNeedsDisplay()
     }
-    
+    //========================================================================
+    // DETERMINE IF SQUARE ADJACENT
+    // --Checks if a square that was clicked is adjacent to the previous ones that were clicked
+    //========================================================================
     func determineIfSquareAdjacent(squareToCheck:Square) -> Bool {
         //Have any other squares been selected?
         if selectedSquares.count > 0 {
+            // rowOfSquares will be nil until there is more than 1 square selected
             //Check for only 1 square
             if let rows = rowOfSquares {
                 print("MORE THAN 1 SQUARE")
@@ -99,27 +116,32 @@ class CreationGrid:GridView {
                 //Only 1 square
                 //Figure out if this is a row of Squares or a column of Squares
                 print("ONLY 1 SQUARE")
-                print("IS HORIZONTALLY ADJACENT? \(determineHorizontallyAdjacent(squareToCheck: squareToCheck))")
-                print("IS VERTICALLY ADJACENT? \(determineVerticallyAdjacent(squareToCheck: squareToCheck))")
+//                print("IS HORIZONTALLY ADJACENT? \(determineHorizontallyAdjacent(squareToCheck: squareToCheck))")
+//                print("IS VERTICALLY ADJACENT? \(determineVerticallyAdjacent(squareToCheck: squareToCheck))")
                 
+                //Determine if the square is in a row or a column
                 let horizontal = determineHorizontallyAdjacent(squareToCheck: squareToCheck)
                 let vertical = determineVerticallyAdjacent(squareToCheck: squareToCheck)
                 
+                //Check for diagonals
                 if horizontal && vertical {
                     //NO DIAGONALS GODDANG IT
                     rowOfSquares = nil
                     return false
                 }
+                //is it a row?
                 else if horizontal {
                     //it's a row of squares
                     rowOfSquares = true
                     return true
                 }
+                //is it a column?
                 else if vertical {
                     rowOfSquares = false
                     return true
                 }
                 else {
+                    //They clicked somewhere WAY off
                     return false
                 }
                 
@@ -132,15 +154,21 @@ class CreationGrid:GridView {
             return true
         }
     }
-    
+    //========================================================================
+    // DETERMINE HORIZONTALLY ADJACENT
+    // --Checks that the square that was clicked is in the same row as the
+    //      rest of the selected squares
+    //========================================================================
     func determineHorizontallyAdjacent(squareToCheck:Square) -> Bool{
         print("HORIZONTAL")
+        //We need to check to the left and right of the first and last square
         var firstSquare:Square?
         var lastSquare:Square?
         
         //Find the "first" and "last" square of the array
         //Squares are not in order in the array
         for square in selectedSquares {
+            //Have they been assigned ANYTHING yet?
             if let first = firstSquare, let last = lastSquare {
                 if square.coordinate.index < first.coordinate.index {
                     firstSquare = square
@@ -154,9 +182,10 @@ class CreationGrid:GridView {
                 lastSquare = square
             }
         }
-        print("THIS IS THE FIRST SQUARE: \(firstSquare!.toString())")
-        print("THIS IS THE LAST SQUARE: \(lastSquare!.toString())")
+//        print("THIS IS THE FIRST SQUARE: \(firstSquare!.toString())")
+//        print("THIS IS THE LAST SQUARE: \(lastSquare!.toString())")
         
+        //These better be in the same row
         if firstSquare!.coordinate.letter != squareToCheck.coordinate.letter {
             return false
         }
@@ -171,7 +200,11 @@ class CreationGrid:GridView {
         //Check if it's to the right of the last square
         return squareToCheck.coordinate.index - 1 == lastSquare?.coordinate.index
     }
-    
+    //========================================================================
+    // DETERMINE VERTICALLY ADJACENT
+    // --Checks that the square that was clicked is in the same column as the
+    //      rest of the selected squares
+    //========================================================================
     func determineVerticallyAdjacent(squareToCheck:Square) -> Bool{
         print("VERTICAL")
         var firstSquare:Square?
@@ -200,11 +233,13 @@ class CreationGrid:GridView {
         }
         print("THIS IS THE FIRST SQUARE: \(firstSquare!.toString())")
         print("THIS IS THE LAST SQUARE: \(lastSquare!.toString())")
-        //Get the letter of the index for our first, last and current square
+        
+        //Make sure they are in the same colum
         if firstSquare!.coordinate.index != squareToCheck.coordinate.index {
             return false
         }
-        
+        //Get the letter of the index for our first, last and current square
+        //It's easier to deal with indexes
         let firstIndex = Board.letters.firstIndex(of: firstSquare!.coordinate.letter)
         let lastIndex = Board.letters.firstIndex(of: lastSquare!.coordinate.letter)
         let curIndex = Board.letters.firstIndex(of: squareToCheck.coordinate.letter)

@@ -14,7 +14,7 @@ class Ship{
     
     //========================================================================
     // Is Sunk?
-    // returns true if all squares are hit
+    // --returns true if all squares are hit
     //========================================================================
     func isSunk()->Bool{
         var count = 0
@@ -26,7 +26,8 @@ class Ship{
         return count == myShip.count
     }
     //========================================================================
-    // INIT, passed the squares that represent the ship
+    // INIT
+    // --passed the squares that represent the ship
     //========================================================================
     init(squares myShip:[Square]) {
         self.myShip = myShip

@@ -38,7 +38,8 @@ class GridView: UIView, drawsBoards {
         }
     }
     //========================================================================
-    // Draw a board as a grid
+    // DRAW BOARD
+    // --Draw a board as a grid
     //========================================================================
     func drawBoard(rect:CGRect) {
         //Handle lettering and numbering
@@ -62,6 +63,7 @@ class GridView: UIView, drawsBoards {
         }
     }
     //========================================================================
+    // DRAW LETTERS AND NUMBERS
     // Adds the letters and the numbers on the side of the grid
     //========================================================================
     private func drawLettersAndNumbers(rect:CGRect) {
@@ -93,13 +95,15 @@ class GridView: UIView, drawsBoards {
         hasDrawnLettersAndNumbers = true
     }
     //========================================================================
-    // DRAW, just calls drawBoard
+    // DRAW
+    // --just calls drawBoard
     //========================================================================
     override func draw(_ rect: CGRect) {
         drawBoard(rect: rect)
     }
     //========================================================================
-    // Finds a Square in a board depending on where you clicked
+    // FIND SQUARE IN BOARD
+    // --Finds a Square in a board depending on where you clicked
     // --Returns: the square that was clicked
     //========================================================================
     func findSquareInBoard(spot:CGPoint) -> Square? {

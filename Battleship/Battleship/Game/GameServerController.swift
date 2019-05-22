@@ -85,6 +85,8 @@ class GameServerController: ClientServerListenerDelegate {
             //someone has won, the server will tell us who
             print("INVOKED GAME OVER")
             gameServerViewDelegate?.newUserDataRecieved(type: serverData.dataType, data: [serverData.serverData])
+            let winnerScore = serverData.serverData == battleshipGame.me ? battleshipGame.myScore : battleshipGame.enemyScore
+            gameServerViewDelegate?.gameOverScore(finalScore: winnerScore, forPlayer: serverData.serverData)
             break
         case .newState:
             //Invoked after fireAt, please look there first
@@ -102,7 +104,7 @@ class GameServerController: ClientServerListenerDelegate {
             }
             //Now update the view
             gameServerViewDelegate?.newUserDataRecieved(type: serverData.dataType, data: [serverData.serverData])
-            
+            gameServerViewDelegate?.updateScores(myScore: battleshipGame.myScore, enemyScore: battleshipGame.enemyScore)
             //Switch who's turn it is
             battleshipGame.currentPlayer = battleshipGame.currentPlayer%2 + 1
             break

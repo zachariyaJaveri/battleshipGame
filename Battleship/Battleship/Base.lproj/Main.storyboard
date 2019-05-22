@@ -59,15 +59,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaM-cd-xUk">
+                                <rect key="frame" x="234" y="80" width="125" height="30"/>
+                                <state key="normal" title="View Leaderboard"/>
+                                <connections>
+                                    <segue destination="etf-YK-lEQ" kind="presentation" id="Dds-34-vgo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="53S-4u-3eZ" firstAttribute="trailing" secondItem="TNU-7P-Jh7" secondAttribute="trailing" constant="286" id="0dN-iL-jWE"/>
+                            <constraint firstItem="P7Z-0k-c57" firstAttribute="top" secondItem="kaM-cd-xUk" secondAttribute="bottom" constant="8" id="Fac-1E-oDz"/>
                             <constraint firstItem="53S-4u-3eZ" firstAttribute="trailing" secondItem="Jh1-XG-pIe" secondAttribute="trailing" constant="312" id="IBG-Mn-Y9g"/>
                             <constraint firstItem="TNU-7P-Jh7" firstAttribute="top" secondItem="rDh-Ej-yF7" secondAttribute="bottom" constant="34" id="UOB-pj-yCW"/>
                             <constraint firstItem="XRV-uu-KwH" firstAttribute="top" secondItem="rDh-Ej-yF7" secondAttribute="bottom" constant="8" id="V4J-9Y-zg5"/>
                             <constraint firstItem="53S-4u-3eZ" firstAttribute="trailing" secondItem="P7Z-0k-c57" secondAttribute="trailing" constant="73" id="XdH-5n-d7E"/>
                             <constraint firstItem="Jh1-XG-pIe" firstAttribute="leading" secondItem="53S-4u-3eZ" secondAttribute="leading" constant="27" id="b2k-P1-l7j"/>
+                            <constraint firstItem="53S-4u-3eZ" firstAttribute="trailing" secondItem="kaM-cd-xUk" secondAttribute="trailing" constant="16" id="bxb-uq-ThG"/>
                             <constraint firstItem="P7Z-0k-c57" firstAttribute="top" secondItem="53S-4u-3eZ" secondAttribute="top" constant="54" id="c0c-Ns-rRD"/>
                             <constraint firstItem="bgJ-ps-KbN" firstAttribute="top" secondItem="TNU-7P-Jh7" secondAttribute="bottom" constant="97" id="dX7-GP-8JJ"/>
                             <constraint firstItem="53S-4u-3eZ" firstAttribute="trailing" secondItem="bgJ-ps-KbN" secondAttribute="trailing" constant="161" id="exh-LS-4Um"/>
@@ -79,6 +88,8 @@
                             <constraint firstItem="Jh1-XG-pIe" firstAttribute="top" secondItem="53S-4u-3eZ" secondAttribute="top" constant="16" id="ppo-ul-QOU"/>
                             <constraint firstItem="53S-4u-3eZ" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="rDh-Ej-yF7" secondAttribute="trailing" constant="206" id="reU-9C-WbL"/>
                             <constraint firstItem="TNU-7P-Jh7" firstAttribute="leading" secondItem="53S-4u-3eZ" secondAttribute="leading" constant="27" id="sYP-pA-soI"/>
+                            <constraint firstItem="kaM-cd-xUk" firstAttribute="top" secondItem="53S-4u-3eZ" secondAttribute="top" constant="16" id="stM-NC-Y9s"/>
+                            <constraint firstItem="kaM-cd-xUk" firstAttribute="leading" secondItem="Jh1-XG-pIe" secondAttribute="trailing" constant="171" id="uZq-pg-Gnf"/>
                             <constraint firstItem="P7Z-0k-c57" firstAttribute="top" secondItem="Jh1-XG-pIe" secondAttribute="bottom" constant="8" id="udM-Na-zQC"/>
                             <constraint firstItem="53S-4u-3eZ" firstAttribute="bottom" secondItem="bgJ-ps-KbN" secondAttribute="bottom" constant="51" id="uug-MG-g0R"/>
                             <constraint firstItem="rDh-Ej-yF7" firstAttribute="leading" secondItem="53S-4u-3eZ" secondAttribute="leading" constant="27" id="xJ8-wO-Jen"/>
@@ -271,6 +282,18 @@
                                     <action selector="fireBtnClick:" destination="d3J-nU-7M4" eventType="touchUpInside" id="Jgo-dv-LKE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2P-oM-x0j">
+                                <rect key="frame" x="348" y="26" width="11" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGg-ru-0kD">
+                                <rect key="frame" x="348" y="303" width="11" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -278,11 +301,19 @@
                             <constraint firstItem="ruY-Go-bZf" firstAttribute="leading" secondItem="mNH-4y-r8O" secondAttribute="leading" constant="50" id="4a7-UV-9UR"/>
                             <constraint firstItem="mNH-4y-r8O" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="b8R-cY-KKw" secondAttribute="trailing" constant="320" id="5xf-s5-A55"/>
                             <constraint firstItem="BiP-wV-mda" firstAttribute="top" secondItem="mNH-4y-r8O" secondAttribute="top" constant="6" id="6dr-t8-q2r"/>
+                            <constraint firstItem="j2P-oM-x0j" firstAttribute="top" secondItem="mNH-4y-r8O" secondAttribute="top" constant="6" id="Djk-rG-l0T"/>
+                            <constraint firstItem="dGg-ru-0kD" firstAttribute="top" secondItem="ruY-Go-bZf" secondAttribute="bottom" constant="4" id="F6s-iy-iQD"/>
+                            <constraint firstItem="j2P-oM-x0j" firstAttribute="leading" relation="lessThanOrEqual" secondItem="BiP-wV-mda" secondAttribute="trailing" constant="241" id="J7g-gL-yFu"/>
+                            <constraint firstItem="ruY-Go-bZf" firstAttribute="top" secondItem="j2P-oM-x0j" secondAttribute="bottom" constant="2" id="JjL-MZ-cjc"/>
                             <constraint firstItem="mNH-4y-r8O" firstAttribute="bottom" secondItem="8DC-iW-hr5" secondAttribute="bottom" constant="20" id="JlP-gF-0Ol"/>
                             <constraint firstItem="fxA-hV-z1L" firstAttribute="leading" secondItem="mNH-4y-r8O" secondAttribute="leading" constant="16" id="MTS-1q-DCU"/>
                             <constraint firstItem="mNH-4y-r8O" firstAttribute="trailing" secondItem="ruY-Go-bZf" secondAttribute="trailing" constant="75" id="Oz7-Nw-Tfh"/>
                             <constraint firstItem="b8R-cY-KKw" firstAttribute="leading" secondItem="mNH-4y-r8O" secondAttribute="leading" constant="50" id="Pkh-fl-VYG"/>
+                            <constraint firstItem="dGg-ru-0kD" firstAttribute="leading" relation="lessThanOrEqual" secondItem="b8R-cY-KKw" secondAttribute="trailing" constant="293" id="R83-9s-59y"/>
+                            <constraint firstItem="qic-go-k1e" firstAttribute="top" secondItem="dGg-ru-0kD" secondAttribute="bottom" constant="5" id="XWl-CS-kDd"/>
                             <constraint firstItem="8DC-iW-hr5" firstAttribute="leading" secondItem="mNH-4y-r8O" secondAttribute="leading" constant="71" id="buh-MF-a6N"/>
+                            <constraint firstItem="mNH-4y-r8O" firstAttribute="trailing" secondItem="dGg-ru-0kD" secondAttribute="trailing" constant="16" id="ciy-sg-Vva"/>
+                            <constraint firstItem="mNH-4y-r8O" firstAttribute="trailing" secondItem="j2P-oM-x0j" secondAttribute="trailing" constant="16" id="d4z-ln-6hA"/>
                             <constraint firstItem="8DC-iW-hr5" firstAttribute="top" secondItem="fxA-hV-z1L" secondAttribute="bottom" constant="9" id="eRU-yb-kRM"/>
                             <constraint firstItem="BiP-wV-mda" firstAttribute="leading" secondItem="mNH-4y-r8O" secondAttribute="leading" constant="50" id="izC-16-QxE"/>
                             <constraint firstItem="fxA-hV-z1L" firstAttribute="top" secondItem="qic-go-k1e" secondAttribute="bottom" constant="8" id="jox-k8-cpW"/>
@@ -299,16 +330,18 @@
                     <connections>
                         <outlet property="enemyGrid" destination="ruY-Go-bZf" id="hgL-CK-Q8r"/>
                         <outlet property="enemyLabel" destination="BiP-wV-mda" id="Yvh-fx-bbp"/>
+                        <outlet property="enemyScore" destination="j2P-oM-x0j" id="SHX-y4-kTX"/>
                         <outlet property="fireBtn" destination="8DC-iW-hr5" id="Roj-g0-5ch"/>
                         <outlet property="playerGrid" destination="qic-go-k1e" id="EBM-Z7-A2w"/>
                         <outlet property="playerLabel" destination="b8R-cY-KKw" id="olK-v8-1UT"/>
+                        <outlet property="playerScore" destination="dGg-ru-0kD" id="KXK-jS-9Tz"/>
                         <outlet property="statusLabel" destination="fxA-hV-z1L" id="ATa-ey-dzG"/>
-                        <segue destination="etf-YK-lEQ" kind="presentation" id="XCa-kY-ElC"/>
+                        <segue destination="etf-YK-lEQ" kind="presentation" identifier="topScoresSegue" id="XCa-kY-ElC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yvq-6m-xO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4176.8000000000002" y="-1157.2713643178411"/>
+            <point key="canvasLocation" x="4164" y="-627"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QPB-rs-lEt">
@@ -418,12 +451,22 @@
                                     <action selector="goBackToPreviousPage:" destination="etf-YK-lEQ" eventType="touchUpInside" id="Hyl-9h-mNN"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEADERBOARD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRk-LI-C4q">
+                                <rect key="frame" x="127" y="29" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="tFA-K8-MLG" firstAttribute="top" secondItem="XRk-LI-C4q" secondAttribute="bottom" constant="14" id="5fC-EB-4PH"/>
+                            <constraint firstItem="vDq-xm-GBq" firstAttribute="trailing" secondItem="XRk-LI-C4q" secondAttribute="trailing" constant="128" id="JdQ-pc-p5R"/>
                             <constraint firstItem="tFA-K8-MLG" firstAttribute="top" secondItem="kr3-k3-RxC" secondAttribute="bottom" constant="14" id="THU-ry-4DR"/>
+                            <constraint firstItem="XRk-LI-C4q" firstAttribute="top" secondItem="vDq-xm-GBq" secondAttribute="top" constant="9" id="aLQ-Ly-gfN"/>
                             <constraint firstItem="kr3-k3-RxC" firstAttribute="leading" secondItem="vDq-xm-GBq" secondAttribute="leading" constant="16" id="iPT-MK-Cf5"/>
                             <constraint firstItem="vDq-xm-GBq" firstAttribute="trailing" secondItem="kr3-k3-RxC" secondAttribute="trailing" constant="305" id="n1S-MG-rzl"/>
+                            <constraint firstItem="XRk-LI-C4q" firstAttribute="leading" secondItem="kr3-k3-RxC" secondAttribute="trailing" constant="57" id="q63-Br-Ggw"/>
                             <constraint firstItem="vDq-xm-GBq" firstAttribute="trailing" secondItem="tFA-K8-MLG" secondAttribute="trailing" constant="16" id="sca-Pw-B3g"/>
                             <constraint firstItem="vDq-xm-GBq" firstAttribute="bottom" secondItem="tFA-K8-MLG" secondAttribute="bottom" constant="20" id="sd7-XH-Rx4"/>
                             <constraint firstItem="tFA-K8-MLG" firstAttribute="leading" secondItem="vDq-xm-GBq" secondAttribute="leading" constant="16" id="uS0-Gn-x4V"/>
@@ -437,7 +480,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O8k-Eo-aHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3415.1999999999998" y="55.322338830584712"/>
+            <point key="canvasLocation" x="3580" y="144"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="XCa-kY-ElC"/>
+    </inferredMetricsTieBreakers>
 </document>

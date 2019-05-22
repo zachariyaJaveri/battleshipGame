@@ -17,4 +17,6 @@ protocol GameServerViewDelegate:class{
     func newUserDataRecieved(type:ServerReceivedData.receivedDataType,data:[String])
     func gameServerConnectionRecieved(player:String)
     func numPlayersChangedUpdateView()
+    func updateScores(myScore:Int, enemyScore:Int)
+    func gameOverScore(finalScore:Int, forPlayer player:String)
 }

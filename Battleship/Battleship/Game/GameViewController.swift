@@ -9,6 +9,8 @@
 import UIKit
 
 class GameViewController: UIViewController, GameServerViewDelegate {
+    
+    
     //FOR CORE
     private(set) var data = [battleshipScoreAndName]()
     let SCORE_SCREEN_SEGUE_NAME = "topScoresSegue"
@@ -28,6 +30,8 @@ class GameViewController: UIViewController, GameServerViewDelegate {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var enemyLabel: UILabel!
     @IBOutlet weak var fireBtn: UIButton!
+    @IBOutlet weak var enemyScore: UILabel!
+    @IBOutlet weak var playerScore: UILabel!
     
     //========================================================================
     // "Fires" at a selected square if there is one
@@ -96,7 +100,6 @@ class GameViewController: UIViewController, GameServerViewDelegate {
         case .gameOver:
             //One person has lost all their ships
             statusLabel.text = "\(data[0]) is the winner!"
-            performSegue(withIdentifier: SCORE_SCREEN_SEGUE_NAME, sender: self)
             break
         case .newState:
             
@@ -144,5 +147,21 @@ class GameViewController: UIViewController, GameServerViewDelegate {
             statusLabel.text = "waiting for another player to connect"
             playerLabel.text = "\(gameServer.battleshipGame.me)"
         }
+    }
+    //========================================================================
+    // Update the scores on screen
+    //========================================================================
+    func updateScores(myScore: Int, enemyScore: Int) {
+        //update the scores
+        playerScore.text = String(myScore)
+        self.enemyScore.text = String(enemyScore)
+    }
+    //========================================================================
+    // Game is over, add the score to the leaderboard
+    //========================================================================
+    func gameOverScore(finalScore: Int, forPlayer player: String) {
+        data.append(battleshipScoreAndName(nameOfPerson: player, scoreOfPerson: finalScore))
+        
+        performSegue(withIdentifier: SCORE_SCREEN_SEGUE_NAME, sender: self)
     }
 }
