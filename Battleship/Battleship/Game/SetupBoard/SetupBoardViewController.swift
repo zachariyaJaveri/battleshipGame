@@ -17,7 +17,7 @@ class SetupBoardViewController: UIViewController {
     let NUM_ROWS = 9
     let NUM_COLS = 9
     
-    var shipLengthsToPlace = [2]
+    var shipLengthsToPlace = [2,3,4,5]
     var shipLengthIndex = 0
     var myFleet:[Ship] = [Ship]()
     
