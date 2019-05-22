@@ -85,7 +85,17 @@ class GameServerController: ClientServerListenerDelegate {
             //someone has won, the server will tell us who
             print("INVOKED GAME OVER")
             gameServerViewDelegate?.newUserDataRecieved(type: serverData.dataType, data: [serverData.serverData])
-            let winnerScore = serverData.serverData == battleshipGame.me ? battleshipGame.myScore : battleshipGame.enemyScore
+            
+            var winnerScore:Int
+            //Add score to core database
+            if serverData.serverData == battleshipGame.me {
+                //I hit the last ship, but i haven't "received" the points for it for me
+                battleshipGame.myScore += battleshipGame.SHIP_HIT_SCORE
+                winnerScore = battleshipGame.myScore
+            }
+            else {
+                winnerScore = battleshipGame.enemyScore
+            }
             gameServerViewDelegate?.gameOverScore(finalScore: winnerScore, forPlayer: serverData.serverData)
             break
         case .newState:
