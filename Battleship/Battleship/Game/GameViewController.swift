@@ -100,6 +100,7 @@ class GameViewController: UIViewController, GameServerViewDelegate {
         case .gameOver:
             //One person has lost all their ships
             statusLabel.text = "\(data[0]) is the winner!"
+            fireBtn.isEnabled = false
             break
         case .newState:
             

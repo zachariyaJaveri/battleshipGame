@@ -116,6 +116,7 @@ class SetupBoardViewController: UIViewController {
 
 
 //TAKEN FROM STACK OVERFLOW :p
+//This just displays a little poppup message to the screen
 //https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift
 extension UIViewController {
     
